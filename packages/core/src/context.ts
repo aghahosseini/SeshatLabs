@@ -33,7 +33,7 @@ export const composeContext = ({
         const key = match.replace(/{{|}}/g, "");
         return state[key] ?? "";
     });
-    return out;
+
 };
 
 /**
@@ -54,7 +54,17 @@ export const composeContext = ({
  * // Adding the header to the body will result in:
  * // "Header\nBody"
  * const text = addHeader(header, body);
- */
+//  */
+// export const addHeader = (header: string, body: string) => {
+//     return body.length > 0 ? `${header ? header + "\n" : header}${body}\n` : "";
+
+
+
+// };
+
+
 export const addHeader = (header: string, body: string) => {
-    return body.length > 0 ? `${header ? header + "\n" : header}${body}\n` : "";
+    let newBody = body.length > 0 ? `${header ? header + "\n" : header}${body}\n` : "";
+
+    return newBody;
 };

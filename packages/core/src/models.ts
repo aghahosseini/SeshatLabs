@@ -340,6 +340,8 @@ export const models: Models = {
             maxOutputTokens: 8192,
             repetition_penalty: 0.4,
             temperature: 0.7,
+
+
         },
         endpoint: settings.GAIANET_SERVER_URL || "http://localhost:8080/v1",
         model: {

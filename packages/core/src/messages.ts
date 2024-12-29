@@ -85,7 +85,7 @@ export const formatMessages = ({
 
             const shortId = message.userId.slice(-5);
 
-            return `(${timestamp}) [${shortId}] ${formattedName}: ${messageContent}${attachmentString}${messageAction && messageAction !== "null" ? ` (${messageAction})` : ""}`;
+            return `(${timestamp}) [${shortId}] ${formattedName}: ${messageContent}${attachmentString}${messageAction && messageAction !== "null" ? ` (${messageAction})` :""}`;
         })
         .join("\n");
     return messageStrings;

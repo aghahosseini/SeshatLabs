@@ -48,6 +48,42 @@ import { fal } from "@fal-ai/client";
  * @returns The completed message.
  */
 
+// this is a test for database
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export async function generateText({
     runtime,
     context,
@@ -135,7 +171,7 @@ export async function generateText({
 
                 const { text: openaiResponse } = await aiGenerateText({
                     model: openai.languageModel(model),
-                    prompt: context,
+                    prompt: "",
                     system:
                         runtime.character.system ??
                         settings.SYSTEM_PROMPT ??
@@ -179,7 +215,8 @@ export async function generateText({
 
                 const { text: anthropicResponse } = await aiGenerateText({
                     model: anthropic.languageModel(model),
-                    prompt: context,
+                    prompt: ""
+                    ,
                     system:
                         runtime.character.system ??
                         settings.SYSTEM_PROMPT ??
@@ -388,21 +425,28 @@ export async function generateText({
                 elizaLogger.debug("Initializing GAIANET model.");
                 const openai = createOpenAI({ apiKey, baseURL: endpoint });
 
+                const prompt = "" ;
+
+
+
                 const { text: openaiResponse } = await aiGenerateText({
                     model: openai.languageModel(model),
-                    prompt: context,
+                    prompt : prompt,
+
                     system:
                         runtime.character.system ??
                         settings.SYSTEM_PROMPT ??
                         undefined,
-                    temperature: temperature,
+                    temperature: 0.7,
                     maxTokens: max_response_length,
-                    frequencyPenalty: frequency_penalty,
+                    frequencyPenalty: 0.2,
                     presencePenalty: presence_penalty,
                 });
 
+
+
                 response = openaiResponse;
-                elizaLogger.debug("Received response from GAIANET model.");
+                elizaLogger.debug("");
                 break;
             }
 
@@ -907,7 +951,7 @@ export const generateImage = async (
                 const blob = await imageResponse.blob();
                 const arrayBuffer = await blob.arrayBuffer();
                 const base64 = Buffer.from(arrayBuffer).toString('base64');
-                
+
                 // Return with proper MIME type
                 return `data:image/jpeg;base64,${base64}`;
             }));

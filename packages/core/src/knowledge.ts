@@ -100,6 +100,8 @@ async function set(
             embedding,
         });
     }
+
+
 }
 
 export function preprocess(content: string): string {
@@ -145,7 +147,9 @@ export function preprocess(content: string): string {
             .trim()
             .toLowerCase()
     );
+
 }
+
 
 export default {
     get,
